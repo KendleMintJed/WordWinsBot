@@ -17,9 +17,8 @@ answersPath = 'longest.json'
 
 try:
     while True:
-        # input()
         try:
-            answerBoxPos = ag.locateOnScreen('screenshots/shortest/AnswerBox.png', confidence=0.9, grayscale=True)
+            answerBoxPos = ag.locateOnScreen('screenshots/longest/AnswerBox.png', confidence=0.9)
             answers = json.load(open(answersPath, 'r'))
 
             print("Searching question...")
@@ -34,7 +33,6 @@ try:
             if questionStr not in answers.keys():
                 print('Question not found...')
                 answers[questionStr] = ""
-                # answers[questionStr] = input('Answer: ')
                 json.dump(answers, open(answersPath, 'w'))
 
             print("Answer:", answers[questionStr])
@@ -44,7 +42,7 @@ try:
             with ag.hold('alt'):
                 ag.press('tab')
                 with ag.hold('shift'):
-                    ag.press('tab')
+                    ag.press('tab')j
             sleep(0.2)
             ag.doubleClick()
             sleep(0.2)
